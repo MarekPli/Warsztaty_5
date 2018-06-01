@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2 class="page-header">Dodaj {{element}}</h2>
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+<br>
+<a href="/edit/{{id}}">Do widoku</a>
+<br>
+<a href="/">Powrót do listy głównej</a>
+{% endblock %}

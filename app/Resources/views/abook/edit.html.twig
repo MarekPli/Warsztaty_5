@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2 class="page-header">Edytuj</h2>
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+
+<h2 style="float:left">Adresy:</h2>
+<p style="float:left"> <a href="/createaddress/{{person_id}}">Dodaj adres</a></p><p style=""><br>
+
+<table>
+{% for address in addresses %}
+	<tr>
+	<th scope = "row"></th>
+	<td>{{address.city}} 
+	<td>{{address.street}}</td>
+	<td>{{address.houseNr}}</td>
+	<td>{{address.flatNr}}</td>
+	<td><a href="/editaddress/{{person_id}}/{{address.id}}">Zmień</a></td></td>
+	<td><a href="/deleteaddress/{{person_id}}/{{address.id}}">Usuń</a></td></td>
+	</tr>
+{% endfor %}
+</table>
+<p>
+<h2 style="float:left">Telefony:</h2>
+<p> 
+<a href="/createphone/{{person_id}}">Dodaj telefon</a>
+</p>
+<p><br>
+<table>
+{% for phone in phones %}
+	<tr>
+	<th scope = "row"></th>
+	<td>{{phone.phoneNr}} 
+	<td>{{phone.phoneType}}</td>
+	<td><a href="/editphone/{{person_id}}/{{phone.id}}">Zmień</a></td></td>
+	<td><a href="/deletephone/{{person_id}}/{{phone.id}}">Usuń</a></td></td>
+	</tr>
+{% endfor %}
+</table>
+<br>
+<h2>Adresy mailowe:</h2>
+<table>
+{% for email in emails %}
+	<tr>
+	<th scope = "row"></th>
+	<td>{{email.emailAddress}} 
+	<td>{{email.emailType}}</td>
+	<td><a href="/editemail/{{person_id}}/{{email.id}}">Zmień</a></td></td>
+	<td><a href="/deleteemail/{{person_id}}/{{email.id}}">Usuń</a></td></td>
+	</tr>
+{% endfor %}
+</table>
+<a href="/createemail/{{person_id}}">Dodaj adres mailowy</a>
+<br>
+
+<h2>Grupy:</h2>
+<table>
+{% for circle in circles %}
+	<tr>
+	<th scope = "row"></th>
+	<td>{{circle.circleName}} 
+	<td><a href="/editcircle/{{person_id}}/{{circle.id}}">Zmień</a></td></td>
+	<td><a href="/deletecircle/{{person_id}}/{{circle.id}}">Usuń</a></td></td>
+	</tr>
+{% endfor %}
+</table>
+<a href="/createcircle/{{person_id}}">Dodaj grupę</a>
+
+<br>
+<a href="/details/{{person_id}}">Do widoku</a>
+<br>
+<a href="/">Powrót do listy głównej</a>
+{% endblock %}

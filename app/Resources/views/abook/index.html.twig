@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table>
+<th>Imię</th>
+<th>Nazwisko</th>
+<th>Opis</th>
+{% for todo in todos|sort %}
+<tr>
+<td><a href="/details/{{todo.id}}">{{todo.name}}</a></td>
+<td>{{todo.surname}}</td>
+<td>{{todo.description}}</td>
+<td>
+</td>
+<td>
+<a href="/edit/{{todo.id}}">Edytuj
+</td>
+<td>
+<a href="/delete/{{todo.id}}">Usuń
+</td>
+</tr>
+{% endfor %}
+<td>
+<a href="/create">Dodaj nową osobę
+</td>
+</table>
+{% endblock %}
